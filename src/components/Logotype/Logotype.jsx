@@ -10,7 +10,7 @@ export default function Logotype() {
 
   return (
     <div className={css.logo} onClick={logoClick}>
-      <img width="136" height="16" src="/public/images/Logo.png" alt="Logo" />
+      <img width="136" height="16" src="/images/Logo.png" alt="Logo" />
     </div>
   );
 }
