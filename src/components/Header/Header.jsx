@@ -5,7 +5,17 @@ import css from "./Header.module.css";
 
 export default function Header() {
   function getClassActiveLink({ isActive }) {
-    return clsx(css.link, isActive && css.active);
+    const excludedPaths = [
+      "/catalog/:id",
+      "/catalog/:id/reviews",
+      "/catalog/:id/features",
+    ];
+
+    const isExcluded = excludedPaths.some((path) =>
+      location.pathname.match(new RegExp(path.replace(":id", "\\d+")))
+    );
+
+    return clsx(css.link, isActive && !isExcluded && css.active);
   }
 
   return (
