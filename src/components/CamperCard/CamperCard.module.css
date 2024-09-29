@@ -1,0 +1,146 @@
+.img {
+  width: 292px;
+  height: 360px;
+  border-radius: 10px;
+  object-fit: cover;
+  background-color: lightgray;
+}
+
+.infoWrap {
+  width: 525px;
+}
+
+.nameWrap {
+  display: flex;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #101828;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #101828;
+}
+
+.btnHeart {
+  background-color: transparent;
+  border: none;
+}
+
+.iconHeart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+}
+
+.iconHeart.favorited {
+  color: #e44848;
+}
+
+.reviewsWrap {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  fill: #ffc531;
+}
+
+.noReviews {
+  fill: #f2f4f7;
+}
+
+.rating {
+  margin-right: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.rating:hover {
+  text-decoration: underline;
+}
+
+.map {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.location {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.description {
+  max-width: 524px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #475467;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.category {
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 0; 
+  flex-shrink: 1; 
+  max-width: 200px; 
+  box-sizing: border-box;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.label {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #101828;
+}
+
+
