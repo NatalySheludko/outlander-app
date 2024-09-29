@@ -1,0 +1,38 @@
+.navigation {
+  max-width: 1440px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid #dadde1;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  column-gap: 40px;
+}
+
+.list {
+  position: relative;
+}
+
+.link {
+	
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #101828;
+}
+
+.text{
+	padding: 24px 0px;
+}
+
+.link.active::after {
+  position: absolute;
+  width: 85px;
+  height: 5px;
+	display: block;
+  background-color: #e44848;
+  content: "";
+}
+
