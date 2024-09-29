@@ -1,0 +1,28 @@
+.navigation {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1440px;
+  padding: 24px 64px;
+  border-bottom: 1px solid #f2f4f7;
+  background-color: #f7f7f7;
+}
+
+.navWrap {
+  display: flex;
+  flex-direction: row;
+  column-gap: 32px;
+  margin: 0 auto;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.active {
+  color: #d84343;
+}
