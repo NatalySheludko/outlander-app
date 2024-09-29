@@ -6,7 +6,7 @@ import { useId } from "react";
 import DatePicker from "react-datepicker";
 import BtnComponent from "../BtnComponent/BtnComponent";
 import "react-datepicker/dist/react-datepicker.css";
-import "./DatePickerStyles.css";
+import "./datePickerStyles.css";
 import css from "./CatalogForm.module.css";
 
 const BookingSchema = Yup.object().shape({
