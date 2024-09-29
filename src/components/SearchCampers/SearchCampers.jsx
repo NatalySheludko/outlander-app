@@ -70,7 +70,7 @@ export default function SearchCampers({ onSearch }) {
         {typeFilters.map(({ name, label, icon }) => (
           <button
             className={clsx(css.filterBtn, {
-              [css.selected]: filters.vehicleType.includes(name),
+              [css.selected]: selectedVehicleType === name, // Use selectedVehicleType for single selection
             })}
             key={name}
             onClick={() => toggleFilter(name, "vehicleType")}

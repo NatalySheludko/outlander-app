@@ -54,11 +54,9 @@
   border-color: #e44848;
 }
 
-
-
 .disabled {
-  opacity: 0.5; 
-  cursor: not-allowed;
+  opacity: 0.5; /* Make it look disabled */
+  pointer-events: none; /* Prevent clicks */
 }
 
 .label {
