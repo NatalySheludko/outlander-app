@@ -1,0 +1,83 @@
+.text {
+  margin-bottom: 32px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #475467;
+}
+
+.title {
+	position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #101828;
+}
+
+.title:after {
+  content: ""; 
+	width: 360px;
+  display: block; 
+  height: 1px; 
+  background-color: #DADDE1; 
+  margin-top: 24px; 
+  margin-bottom: 24px; 
+}
+
+.filtersWrap {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 8px;
+  max-width: 360px;
+}
+
+.filtersWrap:not(:last-of-type) {
+  margin-bottom: 32px;
+}
+
+.filterBtn {
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  width: 112px;
+  padding: 16px 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  border: 1px solid #dadde1;
+  background-color: transparent;
+}
+
+.selected {
+  border-color: #e44848;
+}
+
+
+
+.disabled {
+  opacity: 0.5; 
+  cursor: not-allowed;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  text-align: center;
+  color: #101828;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  fill: #101828;
+}
