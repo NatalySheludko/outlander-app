@@ -43,6 +43,11 @@ export default function SearchCampers() {
     );
   };
 
+  const resetSelection = () => {
+    setSelectedVehicleType("");
+    dispatch(setCategoryFilter({ type: "vehicleType", value: "" })); // Reset Redux state if needed
+  };
+
   return (
     <div>
       <p className={css.text}>Filters</p>
@@ -86,6 +91,7 @@ export default function SearchCampers() {
       </div>
 
       <BtnComponent onClick={handleSearchClick}>Search</BtnComponent>
+      <BtnComponent onClick={resetSelection}>Reset vehicle type</BtnComponent>
     </div>
   );
 }
