@@ -1,13 +1,13 @@
 .img {
   width: 292px;
-  height: 320px;
+  height: 350px;
   border-radius: 10px;
   object-fit: cover;
   background-color: lightgray;
 }
 
 .infoWrap {
-  width: 590px;
+  width: 600px;
 }
 
 .nameWrap {
@@ -17,7 +17,7 @@
 }
 
 .name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.33;
   color: #101828;
@@ -114,7 +114,7 @@
 }
 
 .category {
-  padding: 10px 12px;
+  padding: 9px 12px;
   border-radius: 100px;
   background-color: #f2f4f7;
   display: flex;
