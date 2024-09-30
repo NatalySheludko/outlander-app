@@ -28,8 +28,10 @@ const catalogSlice = createSlice({
   reducers: {
     loadMore: (state) => {
       const nextOffset = state.offset + state.limit;
-      state.visibleItems = state.items.slice(0, nextOffset);
-      state.offset = nextOffset;
+      if (nextOffset < state.items.length) {
+        state.offset = nextOffset;
+        state.visibleItems = state.items.slice(0, nextOffset);
+      }
     },
     resetVisibleItems: (state) => {
       state.visibleItems = [];
@@ -54,9 +56,12 @@ const catalogSlice = createSlice({
           !city || item.location?.toLowerCase().includes(city.toLowerCase());
 
         return matchesEquipment && matchesVehicleType && matchesCity;
-      };
-
-      state.visibleItems = state.items.filter(matchesFilters);
+			};
+			
+			const filteredItems = state.items.filter(matchesFilters);
+      state.visibleItems = filteredItems.slice(0, state.limit);
+      state.total = filteredItems.length;
+      state.offset = state.limit;
     },
   },
 
@@ -85,4 +90,14 @@ export const { loadMore, resetVisibleItems, applyFilters } =
   catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;
+
+
+
+
+
+
+
+
+
+
 

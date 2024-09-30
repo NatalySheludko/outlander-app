@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampers } from "../../redux/catalog/operations.js";
-import { selectCampers } from "../../redux/catalog/selectors.js";
+import { loadMore } from "../../redux/catalog/slice.js";
+import {
+  selectCampers,
+  selectTotalCampers,
+	selectAllCampers,
+	selectIsLoading,
+} from "../../redux/catalog/selectors.js";
 import Location from "../../components/Location/Location.jsx";
 import SearchCampers from "../../components/SearchCampers/SearchCampers.jsx";
 import CamperCard from "../../components/CamperCard/CamperCard.jsx";
@@ -10,7 +16,10 @@ import css from "./CatalogPage.module.css";
 export default function CatalogPage() {
   const dispatch = useDispatch();
 
-  const visibleItems = useSelector(selectCampers);
+  const totalCampers = useSelector(selectTotalCampers);
+	const visibleItems = useSelector(selectCampers);
+	const items = useSelector(selectAllCampers);
+	const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchCampers());
@@ -24,7 +33,9 @@ export default function CatalogPage() {
       </div>
 
       <div>
-        {visibleItems.length === 0 ? (
+        {loading ? (
+          <p>Loading...</p>
+        ) : visibleItems.length === 0 ? (
           <p className={css.text}>No matches found</p>
         ) : (
           <ul className={css.cardWrap}>
@@ -36,13 +47,20 @@ export default function CatalogPage() {
           </ul>
         )}
 
-        {/* {visibleItems.length < totalCampers && (
-          <button className={css.btn} onClick={() => dispatch(loadMore())}>
-            Load More
-          </button>
-        )} */}
+        {visibleItems.length < totalCampers &&
+          visibleItems.length < items.length && (
+            <button className={css.btn} onClick={() => dispatch(loadMore())}>
+              Load More
+            </button>
+          )}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
 
