@@ -21,10 +21,12 @@
 - **Маршрутизація:** React Router.
 - **Запити до API:** Axios.
 - **CSS:** MUI, CSS Modules, Styled Components.
+- **Адаптивний дизайн:** реалізовано для десктопу (1440px).
   
 ### Встановлення та запуск
 1. **Клонувати репозиторій**:
-   https://github.com/NatalySheludko/outlander-app.git
+   - ```bash
+   git clone https://github.com/NatalySheludko/outlander-app.git
 
 2. **Встановити залежності**:
    - ```bash 
