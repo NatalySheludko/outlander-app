@@ -8,7 +8,7 @@ import CamperCard from "../../components/CamperCard/CamperCard.jsx";
 import css from "./CatalogPage.module.css";
 
 export default function CatalogPage() {
-  const [city, setCity] = useState("");
+	const [city, setCity] = useState("");
 
   const dispatch = useDispatch();
 
@@ -16,17 +16,23 @@ export default function CatalogPage() {
 
   useEffect(() => {
     dispatch(fetchCampers());
-  }, [dispatch]);
+	}, [dispatch]);
+
+  const handleCityChange = (event) => {
+    const selectedCity = event.target.value;
+    setCity(selectedCity);
+    dispatch(setCityFilter(selectedCity));
+  };
 
   return (
     <div className={css.container}>
       <div>
-        <Location selectedCity={city} />
+        <Location selectedCity={city} handleCityChange={handleCityChange} />
         <SearchCampers />
       </div>
 
       <div>
-        {visibleItems.length === 0 ? (
+        { visibleItems.length === 0 ? (
           <p className={css.text}>No matches found</p>
         ) : (
           <ul className={css.cardWrap}>
@@ -38,11 +44,22 @@ export default function CatalogPage() {
           </ul>
         )}
 
-        {visibleItems.length > 0 && (
-          <button className={css.btn}>Load More</button>
-        )}
+        {/* {visibleItems.length < totalCampers && (
+          <button className={css.btn} onClick={() => dispatch(loadMore())}>
+            Load More
+          </button>
+        )} */}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
 

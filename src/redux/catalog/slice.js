@@ -36,7 +36,7 @@ const catalogSlice = createSlice({
       state.offset = 0;
     },
     applyFilters: (state, action) => {
-      const { equipment = [], vehicleType = [], city = "" } = action.payload;
+      const { equipment, vehicleType, city } = action.payload;
 
       const matchesFilters = (item) => {
         const matchesEquipment =
