@@ -30,6 +30,9 @@ const categorySlice = createSlice({
         state.city = value;
       }
     },
+    setCityFilter: (state, action) => {
+      state.city = action.payload;
+    },
     resetFilters: (state) => {
       state.equipment = [];
       state.vehicleType = [];
@@ -38,7 +41,8 @@ const categorySlice = createSlice({
   },
 });
 
-export const { setCategoryFilter, resetFilters } = categorySlice.actions;
+export const { setCategoryFilter, resetFilters, setCityFilter } =
+  categorySlice.actions;
 
 export const categoryReducer = categorySlice.reducer;
 

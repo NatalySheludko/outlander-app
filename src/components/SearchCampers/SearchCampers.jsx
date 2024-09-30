@@ -12,7 +12,7 @@ import {
 import BtnComponent from "../BtnComponent/BtnComponent.jsx";
 import css from "./SearchCampers.module.css";
 
-export default function SearchCampers({ onSearch }) {
+export default function SearchCampers() {
   const [selectedVehicleType, setSelectedVehicleType] = useState(null);
 
   const dispatch = useDispatch();
@@ -22,26 +22,25 @@ export default function SearchCampers({ onSearch }) {
   const typeFilters = getTypeFilters();
   const equipmentFilters = getEquipmentFilters();
 
- const toggleFilter = (filter, type) => {
-   if (type === "equipment" || type === "vehicleType") {
-     dispatch(setCategoryFilter({ type, value: filter }));
-   }
+  const toggleFilter = (filter, type) => {
+    if (type === "equipment" || type === "vehicleType") {
+      dispatch(setCategoryFilter({ type, value: filter }));
+    }
 
-   if (type === "vehicleType") {
-     setSelectedVehicleType((prev) => (prev === filter ? null : filter)); 
-   }
- };
+    if (type === "vehicleType") {
+      setSelectedVehicleType((prev) => (prev === filter ? null : filter));
+    }
+  };
 
   const handleSearchClick = () => {
     dispatch(resetVisibleItems());
     dispatch(
       applyFilters({
         equipment: filters.equipment,
-        vehicleType: selectedVehicleType ? [selectedVehicleType] : [], 
+        vehicleType: selectedVehicleType ? [selectedVehicleType] : [],
         city: filters.city,
       })
     );
-    onSearch();
   };
 
   return (
@@ -90,10 +89,4 @@ export default function SearchCampers({ onSearch }) {
     </div>
   );
 }
-
-
-
-
-
-
 
