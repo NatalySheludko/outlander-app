@@ -58,8 +58,6 @@ const catalogSlice = createSlice({
         return matchesEquipment && matchesVehicleType && matchesCity;
       });
 
-      console.log("Filtered Items:", filteredItems);
-
       if (nextOffset < filteredItems.length) {
         state.offset = nextOffset;
         state.visibleItems = filteredItems.slice(0, nextOffset);

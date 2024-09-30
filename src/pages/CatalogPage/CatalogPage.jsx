@@ -5,9 +5,6 @@ import { loadMore } from "../../redux/catalog/slice.js";
 import {
   selectCampers,
   selectTotalCampers,
-  selectAllCampers,
-  selectIsLoading,
-  selectActiveFilters,
 } from "../../redux/catalog/selectors.js";
 import Location from "../../components/Location/Location.jsx";
 import SearchCampers from "../../components/SearchCampers/SearchCampers.jsx";
@@ -19,9 +16,6 @@ export default function CatalogPage() {
 
   const totalCampers = useSelector(selectTotalCampers);
 	const visibleItems = useSelector(selectCampers);
-	const items = useSelector(selectAllCampers);
-	const loading = useSelector(selectIsLoading);
-	const activeFilters = useSelector(selectActiveFilters);
 
   useEffect(() => {
     dispatch(fetchCampers());
@@ -39,20 +33,7 @@ export default function CatalogPage() {
       </div>
 
       <div>
-        <h2>Active Filters:</h2>
-        <ul>
-          {Object.entries(activeFilters).map(([key, value]) => (
-            <li key={key}>
-              {`${key}: ${Array.isArray(value) ? value.join(", ") : value}`}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : visibleItems.length === 0 ? (
+        {visibleItems.length === 0 ? (
           <p className={css.text}>No matches found</p>
         ) : (
           <ul className={css.cardWrap}>
