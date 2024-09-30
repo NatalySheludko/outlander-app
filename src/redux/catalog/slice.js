@@ -20,6 +20,11 @@ const initialState = {
   limit: 4,
   offset: 0,
   selectedCamper: null,
+  activeFilters: {
+    equipment: [], 
+    vehicleType: [], 
+    city: "", 
+  },
 };
 
 const catalogSlice = createSlice({
@@ -28,19 +33,14 @@ const catalogSlice = createSlice({
   reducers: {
     loadMore: (state) => {
       const nextOffset = state.offset + state.limit;
-      if (nextOffset < state.items.length) {
-        state.offset = nextOffset;
-        state.visibleItems = state.items.slice(0, nextOffset);
-      }
-    },
-    resetVisibleItems: (state) => {
-      state.visibleItems = [];
-      state.offset = 0;
-    },
-    applyFilters: (state, action) => {
-      const { equipment, vehicleType, city } = action.payload;
 
-      const matchesFilters = (item) => {
+      const {
+        equipment = [],
+        vehicleType = [],
+        city = "",
+      } = state.activeFilters || {};
+
+      const filteredItems = state.items.filter((item) => {
         const matchesEquipment =
           equipment.length === 0 ||
           equipment.every(
@@ -56,12 +56,48 @@ const catalogSlice = createSlice({
           !city || item.location?.toLowerCase().includes(city.toLowerCase());
 
         return matchesEquipment && matchesVehicleType && matchesCity;
-			};
-			
-			const filteredItems = state.items.filter(matchesFilters);
+      });
+
+      console.log("Filtered Items:", filteredItems);
+
+      if (nextOffset < filteredItems.length) {
+        state.offset = nextOffset;
+        state.visibleItems = filteredItems.slice(0, nextOffset);
+      } else {
+        state.visibleItems = filteredItems;
+        state.offset = filteredItems.length; 
+      }
+    },
+    resetVisibleItems: (state) => {
+      state.visibleItems = [];
+      state.offset = 0;
+    },
+    applyFilters: (state, action) => {
+      const { equipment, vehicleType, city } = action.payload;
+
+      state.activeFilters = { equipment, vehicleType, city };
+
+      const filteredItems = state.items.filter((item) => {
+        const matchesEquipment =
+          equipment.length === 0 ||
+          equipment.every(
+            (filter) =>
+              item[filter] === true ||
+              item.transmission?.toLowerCase() === filter.toLowerCase()
+          );
+
+        const matchesVehicleType =
+          vehicleType.length === 0 || vehicleType.includes(item.form);
+
+        const matchesCity =
+          !city || item.location?.toLowerCase().includes(city.toLowerCase());
+
+        return matchesEquipment && matchesVehicleType && matchesCity;
+      });
+
       state.visibleItems = filteredItems.slice(0, state.limit);
-      state.total = filteredItems.length;
-      state.offset = state.limit;
+      state.total = filteredItems.length; 
+      state.offset = state.limit; 
     },
   },
 
@@ -90,6 +126,15 @@ export const { loadMore, resetVisibleItems, applyFilters } =
   catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;
+
+
+
+
+
+
+
+
+
 
 
 

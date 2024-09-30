@@ -5,8 +5,9 @@ import { loadMore } from "../../redux/catalog/slice.js";
 import {
   selectCampers,
   selectTotalCampers,
-	selectAllCampers,
-	selectIsLoading,
+  selectAllCampers,
+  selectIsLoading,
+  selectActiveFilters,
 } from "../../redux/catalog/selectors.js";
 import Location from "../../components/Location/Location.jsx";
 import SearchCampers from "../../components/SearchCampers/SearchCampers.jsx";
@@ -20,16 +21,32 @@ export default function CatalogPage() {
 	const visibleItems = useSelector(selectCampers);
 	const items = useSelector(selectAllCampers);
 	const loading = useSelector(selectIsLoading);
+	const activeFilters = useSelector(selectActiveFilters);
 
   useEffect(() => {
     dispatch(fetchCampers());
-  }, [dispatch]);
+	}, [dispatch]);
+	
+	const handleLoadMore = () => {
+    dispatch(loadMore());
+  };
 
   return (
     <div className={css.container}>
       <div>
         <Location />
         <SearchCampers />
+      </div>
+
+      <div>
+        <h2>Active Filters:</h2>
+        <ul>
+          {Object.entries(activeFilters).map(([key, value]) => (
+            <li key={key}>
+              {`${key}: ${Array.isArray(value) ? value.join(", ") : value}`}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
@@ -47,16 +64,22 @@ export default function CatalogPage() {
           </ul>
         )}
 
-        {visibleItems.length < totalCampers &&
-          visibleItems.length < items.length && (
-            <button className={css.btn} onClick={() => dispatch(loadMore())}>
-              Load More
-            </button>
-          )}
+        {visibleItems.length < totalCampers && (
+          <button className={css.btn} onClick={handleLoadMore}>
+            Load More
+          </button>
+        )}
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
 
 
 
