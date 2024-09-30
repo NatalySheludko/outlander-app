@@ -1,10 +1,10 @@
 .container {
   margin: 0 auto;
   max-width: 1440px;
-  padding: 48px 64px 52px 64px;
+  padding: 48px 50px 52px 50px;
   display: flex;
   flex-direction: row;
-  column-gap: 64px;
+  column-gap: 40px;
 }
 
 .text {
@@ -16,7 +16,7 @@
 }
 
 .cardWrap {
-  width: 888px;
+  width: 950px;
 }
 
 .card {
