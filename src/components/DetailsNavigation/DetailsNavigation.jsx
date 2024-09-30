@@ -1,4 +1,4 @@
-import { NavLink, useParams, Outlet } from "react-router-dom";
+import { NavLink, useParams, Outlet, useNavigate } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
@@ -9,6 +9,7 @@ import css from "./DetailsNavigation.module.css";
 export default function DetailsNavigation() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function getClassActiveLink({ isActive }) {
     return clsx(css.link, isActive && css.active);
@@ -16,7 +17,15 @@ export default function DetailsNavigation() {
 
   useEffect(() => {
     dispatch(fetchCamperById(id));
-  }, [dispatch, id]);
+
+    const currentPath = window.location.pathname;
+    if (
+      !currentPath.includes(`/catalog/${id}/features`) &&
+      !currentPath.includes(`/catalog/${id}/reviews`)
+    ) {
+      navigate(`/catalog/${id}/features`);
+    }
+  }, [dispatch, id, navigate]);
 
   return (
     <>
