@@ -12,6 +12,7 @@ export default function HomePage() {
 
   return (
     <div className={css.container}>
+      <div className={css.background}></div>
       <div className={css.wrap}>
         <h1 className={css.title}>Campers of your dreams</h1>
         <p className={css.info}>
@@ -22,4 +23,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 

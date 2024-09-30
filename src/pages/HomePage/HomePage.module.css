@@ -1,20 +1,37 @@
 .container {
+  position: relative;
   margin: 0 auto;
-  background-image: url("/public/images//Campers@1x.png");
+  max-width: 1440px;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/public/images/Campers@1x.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1440px;
+  filter: brightness(1.5) saturate(1.1);
+  transform: scaleX(-1);
+  z-index: -1;
 }
 
 @media (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .container {
+  .background {
     background-image: url("/public/images/Campers@2x.png");
+    filter: brightness(1.5) saturate(1.1);
+    transform: scaleX(-1);
   }
 }
 
 .wrap {
-  padding: 260px 64px;
+  position: relative;
+  z-index: 1;
+  padding: 450px 64px 150px 64px;
 }
 
 .title {
@@ -32,5 +49,4 @@
   line-height: 1.33;
   color: #f7f7f7;
 }
-
 
