@@ -1,13 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import clsx from "clsx";
-import {
-  setEquipmentFilter,
-  setVehicleTypeFilter,
-  applyFilters,
-  resetVisibleItems,
-} from "../../redux/catalog/slice.js";
-import { selectFilters } from "../../redux/catalog/selectors.js";
+import { resetVisibleItems, applyFilters } from "../../redux/catalog/slice.js";
+import { setCategoryFilter } from "../../redux/category/slice.js";
+import { selectCategories } from "../../redux/category/selectors.js";
 import {
   capitalizeFirstLetter,
   getTypeFilters,
@@ -16,34 +12,47 @@ import {
 import BtnComponent from "../BtnComponent/BtnComponent.jsx";
 import css from "./SearchCampers.module.css";
 
-export default function SearchCampers({ onSearch }) {
-  const [selectedVehicleType, setSelectedVehicleType] = useState([]);
+export default function SearchCampers() {
+  const [selectedVehicleType, setSelectedVehicleType] = useState(null);
 
   const dispatch = useDispatch();
 
-  const filters = useSelector(selectFilters);
+  const filters = useSelector(selectCategories);
 
   const typeFilters = getTypeFilters();
   const equipmentFilters = getEquipmentFilters();
 
   const toggleFilter = (filter, type) => {
-    if (type === "equipment") {
-      dispatch(setEquipmentFilter(filter));
-    } else {
+    if (type === "equipment" || type === "vehicleType") {
+      dispatch(setCategoryFilter({ type, value: filter }));
+    }
+
+    if (type === "vehicleType") {
       if (selectedVehicleType === filter) {
         setSelectedVehicleType(null);
-        dispatch(setVehicleTypeFilter(filter));
       } else {
         setSelectedVehicleType(filter);
-        dispatch(setVehicleTypeFilter(filter));
       }
     }
+
+    dispatch(
+      applyFilters({
+        equipment: filters.equipment,
+        vehicleType: selectedVehicleType ? [selectedVehicleType] : [],
+        city: filters.city,
+      })
+    );
   };
 
   const handleSearchClick = () => {
     dispatch(resetVisibleItems());
-    dispatch(applyFilters());
-    onSearch();
+    dispatch(
+      applyFilters({
+        equipment: filters.equipment,
+        vehicleType: selectedVehicleType ? [selectedVehicleType] : [],
+        city: filters.city,
+      })
+    );
   };
 
   return (
@@ -68,16 +77,23 @@ export default function SearchCampers({ onSearch }) {
       <h2 className={css.title}>Vehicle Type</h2>
       <div className={css.filtersWrap}>
         {typeFilters.map(({ name, label, icon }) => (
-          <button
-            className={clsx(css.filterBtn, {
-              [css.selected]: selectedVehicleType === name, // Use selectedVehicleType for single selection
-            })}
+          <label
             key={name}
-            onClick={() => toggleFilter(name, "vehicleType")}
+            className={`${css.radioLabel} ${css.filterBtn} ${
+              selectedVehicleType === name ? css.selected : ""
+            }`}
           >
+            <input
+              type="radio"
+              name="vehicleType"
+              value={name}
+              checked={selectedVehicleType === name}
+              onChange={() => toggleFilter(name, "vehicleType")}
+              className={css.radioInput}
+            />
             <span className={css.icon}>{icon}</span>
             <span className={css.label}>{capitalizeFirstLetter(label)}</span>
-          </button>
+          </label>
         ))}
       </div>
 
