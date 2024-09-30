@@ -19,11 +19,6 @@ const initialState = {
   error: false,
   limit: 4,
   offset: 0,
-  filters: {
-    equipment: [],
-    vehicleType: [],
-    city: "",
-  },
   selectedCamper: null,
 };
 
@@ -36,51 +31,21 @@ const catalogSlice = createSlice({
       state.visibleItems = state.items.slice(0, nextOffset);
       state.offset = nextOffset;
     },
-    setEquipmentFilter: (state, action) => {
-      const filter = action.payload;
-      if (state.filters.equipment.includes(filter)) {
-        state.filters.equipment = state.filters.equipment.filter(
-          (item) => item !== filter
-        );
-      } else {
-        state.filters.equipment.push(filter);
-      }
-    },
-    setVehicleTypeFilter: (state, action) => {
-      const filter = action.payload;
-      if (state.filters.vehicleType.includes(filter)) {
-        state.filters.vehicleType = state.filters.vehicleType.filter(
-          (item) => item !== filter
-        );
-      } else {
-        state.filters.vehicleType.push(filter);
-      }
-    },
-    setCityFilter: (state, action) => {
-      state.filters.city = action.payload;
-    },
     resetVisibleItems: (state) => {
       state.visibleItems = [];
       state.offset = 0;
     },
-
-    resetFilters: (state) => {
-      state.filters = { equipment: [], vehicleType: [], city: "" };
-      state.visibleItems = [];
-      state.offset = 0;
-    },
-    applyFilters: (state) => {
-      const { equipment, vehicleType, city } = state.filters;
+    applyFilters: (state, action) => {
+      const { equipment = [], vehicleType = [], city = "" } = action.payload;
 
       const matchesFilters = (item) => {
         const matchesEquipment =
           equipment.length === 0 ||
-          equipment.every((filter) => {
-            return (
+          equipment.every(
+            (filter) =>
               item[filter] === true ||
               item.transmission?.toLowerCase() === filter.toLowerCase()
-            );
-          });
+          );
 
         const matchesVehicleType =
           vehicleType.length === 0 || vehicleType.includes(item.form);
@@ -116,15 +81,8 @@ const catalogSlice = createSlice({
   },
 });
 
-export const {
-  loadMore,
-  setEquipmentFilter,
-  setVehicleTypeFilter,
-  setCityFilter,
-  resetFilters,
-  resetVisibleItems,
-  applyFilters,
-} = catalogSlice.actions;
+export const { loadMore, resetVisibleItems, applyFilters } =
+  catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;
 

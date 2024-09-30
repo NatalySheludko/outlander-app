@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { catalogReducer } from "./catalog/slice";
+import { categoryReducer } from "./category/slice";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -24,6 +25,7 @@ const persistedCatalogReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     catalog: persistedCatalogReducer,
+    category: categoryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -34,6 +36,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
 
