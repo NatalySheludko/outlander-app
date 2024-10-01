@@ -44,7 +44,7 @@
 The project uses a backend API to manage camper listings. 
 **Key endpoints:**
  - GET /campers - Retrieve a list of all campers.
- - GET /campers/:id - - Retrieve details about a specific camper.
+ - GET /campers/:id - Retrieve details about a specific camper.
 **Main Pages**
 Homepage: /
 Camper Catalog: /catalog
