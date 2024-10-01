@@ -25,17 +25,19 @@
   
 ### Встановлення та запуск
 1. **Клонувати репозиторій**:
-   git clone https://github.com/NatalySheludko/outlander-app.git
+   ```bash
+   git clone [https://github.com/NatalySheludko/outlander-app.git](https://github.com/NatalySheludko/outlander-app.git)
 
-2. **Встановити залежності**:
-   - ```bash 
-	 npm install
+3. **Встановити залежності**:
+   ```bash 
+   npm install
 
-3. **Запустити локальний сервер**:
-   - ```bash
-	 npm run dev
+4. **Запустити локальний сервер**:
+   ```bash
+   npm run dev
 
-4. **Відкрити додаток у браузері за адресою**:   		
+5. **Відкрити додаток у браузері за адресою**:
+   ```bash  		
    http://localhost:5173
 
 ### API
