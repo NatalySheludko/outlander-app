@@ -12,11 +12,11 @@ import css from "./CamperCard.module.css";
 
 
 export default function CamperCard({ camper }) {
-	const categories = getCategories();
+  const categories = getCategories();
 	
   const [favorites, setFavorites] = useState(() => {
-    const savedFavorites = localStorage.getItem("favorites");
-    return savedFavorites ? new Set(JSON.parse(savedFavorites)) : new Set();
+  const savedFavorites = localStorage.getItem("favorites");
+  return savedFavorites ? new Set(JSON.parse(savedFavorites)) : new Set();
   });
 
   const navigate = useNavigate();
