@@ -1,51 +1,51 @@
 # OutlanderApp
 
-### Опис
-**OutlanderApp** - це фронтенд частина веб-додатку для компанії, що спеціалізується на оренді кемперів. Додаток дозволяє користувачам переглядати каталог кемперів, переглядати деталі окремих кемперів, додавати їх до обраного, читати відгуки, а також здійснювати бронювання.
+### Description
+**OutlanderApp** - is the frontend part of a web application for a company specializing in camper rentals. The application allows users to browse a catalog of campers, view details of individual campers, add them to favorites, read reviews, and make bookings.
 
-### Основні функції
-1. **Домашня сторінка** - містить банер з основним закликом до дії та кнопку для переходу на сторінку каталогу.
-2. **Каталог кемперів** - показує всі доступні транспортні засоби з можливістю фільтрації за такими критеріями, як:
-   - Локація
-   - Тип кузова
-   - Наявність кондиціонера, кухні та інших характеристик
-3. **Сторінка окремого кемпера** - детальний опис транспортного засобу, галерея фотографій, відгуки користувачів, форма для бронювання.
-4. **Фільтрація** - фільтруйте кемпери за різними параметрами для швидкого пошуку.
-5. **Обране** - додавайте кемпери до списку обраних, який зберігається навіть після оновлення сторінки.
-6. **Деталі кемпера** - можливість перегляду додаткових характеристик транспортного засобу та детального опису.
-7. **Форма бронювання** - заповніть форму, щоб забронювати кемпер та отримати нотифікацію про вдале бронювання.
+### Key Features
+1. **Homepage** - Contains a banner with the main call to action and a button to navigate to the catalog page.
+2. **Camper Catalog** - Displays all available vehicles with filtering options based on:
+   - Location
+   - Vehicle type
+   - Availability of air conditioning, kitchen, and other features
+3. **Individual Camper Page** - Detailed description of the vehicle, photo gallery, user reviews, and a booking form.
+4. **Filtering** - Filter campers by various parameters for quick searches.
+5. **Favorites** - Add campers to a favorites list that persists even after refreshing the page.
+6. **Camper Details** - View additional specifications of the vehicle and a detailed description.
+7. **Booking Form** - Fill out a form to book a camper and receive a notification about successful booking.
 
-### Технічні вимоги
-- **Фреймворк:** React з використанням бандлеру Vite.
-- **Управління станом:** Redux.
-- **Маршрутизація:** React Router.
-- **Запити до API:** Axios.
+### Technical stack
+- **Framework:** React using Vite bundler.
+- **State Management:** Redux.
+- **Routing:** React Router.
+- **API Requests:** Axios.
 - **CSS:** MUI, CSS Modules, Styled Components.
-- **Адаптивний дизайн:** реалізовано для десктопу (1440px).
+- **Responsive Design:** реалізовано для десктопу (1440px).
   
-### Встановлення та запуск
-1. **Клонувати репозиторій**:
+### Installation and Launch
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/NatalySheludko/outlander-app.git
 
-2. **Встановити залежності**:
+2. **Install dependencies**:
    ```bash 
    npm install
 
-3. **Запустити локальний сервер**:
+3. **Start the local server**:
    ```bash
    npm run dev
 
-4. **Відкрити додаток у браузері за адресою**:
+4. **Open the application in a browser at**:
    ```bash  		
    http://localhost:5173
 
 ### API
-Проєкт використовує бекенд API для роботи з оголошеннями про кемпери. 
-**Основні ендпоінти**:
- - GET /campers - отримання списку всіх кемперів.
- - GET /campers/:id - отримання деталей про конкретний кемпер.
-**Основні сторінки**
-Домашня сторінка: /
-Каталог кемперів: /catalog
-Сторінка окремого кемпера: /catalog/:id
+The project uses a backend API to manage camper listings. 
+**Key endpoints:**
+ - GET /campers - Retrieve a list of all campers.
+ - GET /campers/:id - - Retrieve details about a specific camper.
+**Main Pages**
+Homepage: /
+Camper Catalog: /catalog
+Individual Camper Page: /catalog/:id
