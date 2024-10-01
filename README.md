@@ -26,7 +26,7 @@
 ### Встановлення та запуск
 1. **Клонувати репозиторій**:
    ```bash
-   git clone [https://github.com/NatalySheludko/outlander-app.git](https://github.com/NatalySheludko/outlander-app.git)
+   git clone https://github.com/NatalySheludko/outlander-app.git
 
 3. **Встановити залежності**:
    ```bash 
