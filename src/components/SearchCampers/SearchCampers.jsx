@@ -10,6 +10,7 @@ import {
   getEquipmentFilters,
 } from "../UtilsComponent/UtilsComponent";
 import BtnComponent from "../BtnComponent/BtnComponent.jsx";
+import { FiXCircle } from "react-icons/fi";
 import css from "./SearchCampers.module.css";
 
 export default function SearchCampers() {
@@ -70,28 +71,30 @@ export default function SearchCampers() {
       <h2 className={css.title}>Vehicle Type</h2>
       <div className={css.filtersWrap}>
         {typeFilters.map(({ name, label, icon }) => (
-          <label
-            key={name}
-            className={`${css.radioLabel} ${css.filterBtn} ${
-              selectedVehicleType === name ? css.selected : ""
-            }`}
-          >
-            <input
-              type="radio"
-              name="vehicleType"
-              value={name}
-              checked={selectedVehicleType === name}
-              onChange={() => toggleFilter(name, "vehicleType")}
-              className={css.radioInput}
-            />
-            <span className={css.icon}>{icon}</span>
-            <span className={css.label}>{capitalizeFirstLetter(label)}</span>
-          </label>
+          <div className={css.iconPosition}>
+            <label
+              key={name}
+              className={`${css.radioLabel} ${css.filterBtn} ${
+                selectedVehicleType === name ? css.selected : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="vehicleType"
+                value={name}
+                checked={selectedVehicleType === name}
+                onChange={() => toggleFilter(name, "vehicleType")}
+                className={css.radioInput}
+              />
+              <span className={css.icon}>{icon}</span>
+              <span className={css.label}>{capitalizeFirstLetter(label)}</span>
+            </label>
+            <FiXCircle className={css.resetRadioBtn} onClick={resetSelection} />
+          </div>
         ))}
       </div>
 
       <BtnComponent onClick={handleSearchClick}>Search</BtnComponent>
-      <BtnComponent onClick={resetSelection}>Reset vehicle type</BtnComponent>
     </div>
   );
 }
