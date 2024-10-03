@@ -15,13 +15,13 @@ export default function CatalogPage() {
   const dispatch = useDispatch();
 
   const totalCampers = useSelector(selectTotalCampers);
-	const visibleItems = useSelector(selectCampers);
+  const visibleItems = useSelector(selectCampers);
 
   useEffect(() => {
     dispatch(fetchCampers());
-	}, [dispatch]);
-	
-	const handleLoadMore = () => {
+  }, [dispatch]);
+
+  const handleLoadMore = () => {
     dispatch(loadMore());
   };
 
@@ -54,17 +54,4 @@ export default function CatalogPage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

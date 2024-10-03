@@ -2,12 +2,19 @@
   margin: 0 auto;
   max-width: 1440px;
   padding: 48px 50px 52px 50px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
   column-gap: 40px;
-	overflow-y: auto;
+  overflow-y: scroll;
   height: 100vh;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 .text {
